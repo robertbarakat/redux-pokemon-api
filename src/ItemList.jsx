@@ -42,7 +42,7 @@ class ItemList extends Component {
     }
 
     render() {
-        console.log(this.props.items);
+
         const pokemon = [...this.props.items].slice(this.state.min, this.state.max);
 
         if (this.props.hasErrored) {
