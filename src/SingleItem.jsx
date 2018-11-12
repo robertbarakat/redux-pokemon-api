@@ -10,7 +10,7 @@ class SingleItem extends Component {
     }
 
     render() {
-        const test = this.props.poke.names;
+        const nom = this.props.poke.names;
         
         if(this.props.hasErrored){
             return(
@@ -30,10 +30,10 @@ class SingleItem extends Component {
         
         else return (
             <div>
-                <p>Nom français: {test && test.fr}</p>
-                <p>Nom italien: {test && test.it}</p>
-                <p>Nom anglais: {test && test.en}</p>
-                <p>Nom allemand: {test && test.de}</p>
+                <p>Nom français: {nom && nom.fr}</p>
+                <p>Nom italien: {nom && nom.it}</p>
+                <p>Nom anglais: {nom && nom.en}</p>
+                <p>Nom allemand: {nom && nom.de}</p>
                 <p>Height: {this.props.poke.height_eu}</p>
                 <p>Weight: {this.props.poke.weight_eu}</p>
                 <button>
