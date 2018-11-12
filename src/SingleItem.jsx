@@ -20,7 +20,7 @@ class SingleItem extends Component {
             )
         }
 
-        else if(this.props.isLoading){
+        else if(!nom || this.props.isLoading){ // alternative à nom && nom.fr
             return(
                 <div>
                     <h2>The page is loading...</h2>
@@ -30,10 +30,10 @@ class SingleItem extends Component {
         
         else return (
             <div>
-                <p>Nom français: {nom && nom.fr}</p>
-                <p>Nom italien: {nom && nom.it}</p>
-                <p>Nom anglais: {nom && nom.en}</p>
-                <p>Nom allemand: {nom && nom.de}</p>
+                <p>Nom français: {nom.fr}</p>
+                <p>Nom italien: {nom.it}</p>
+                <p>Nom anglais: {nom.en}</p>
+                <p>Nom allemand: {nom.de}</p>
                 <p>Height: {this.props.poke.height_eu}</p>
                 <p>Weight: {this.props.poke.weight_eu}</p>
                 <button>
@@ -57,7 +57,11 @@ function mstp(state){
 
 function mdtp(dispatch){
     return {
-        fetchPoke: (url) => dispatch(fetchPoke(url))
+        /* Si j'ai pas d'action simple qui renvoie un objet avec {type: ...}  
+           je n'utilise pas bindActionCreators */
+        fetchPoke: (url) => dispatch(fetchPoke(url))  
+        /* si j'ai un bindActionCreators je l'utilise ici comme d'habitude:
+           return bindActionCreators({myFunction}, dispatch) */
     }
 }
 
